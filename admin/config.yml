@@ -1,0 +1,46 @@
+backend:
+  name: github
+  repo: Vedmega/Latilier
+  branch: main
+
+media_folder: "content/uploads"
+public_folder: "/content/uploads"
+
+collections:
+  - name: "pages"
+    label: "Тексти сайту"
+    files:
+      - name: "home"
+        label: "Головна сторінка"
+        file: "content/home.md"
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Текст", name: "body", widget: "markdown" }
+
+  - name: "gallery"
+    label: "Галерея робіт"
+    folder: "content/gallery"
+    create: true
+    fields:
+      - { label: "Назва", name: "title", widget: "string" }
+      - { label: "Фото", name: "image", widget: "image" }
+      - { label: "Опис", name: "body", widget: "markdown" }
+
+  - name: "products"
+    label: "Каталог виробів"
+    folder: "content/products"
+    create: true
+    fields:
+      - { label: "Назва", name: "title", widget: "string" }
+      - { label: "Фото", name: "image", widget: "image" }
+      - { label: "Ціна", name: "price", widget: "string" }
+      - { label: "Опис", name: "body", widget: "markdown" }
+
+  - name: "blog"
+    label: "Блог"
+    folder: "content/blog"
+    create: true
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Дата", name: "date", widget: "datetime" }
+      - { label: "Текст", name: "body", widget: "markdown" }
