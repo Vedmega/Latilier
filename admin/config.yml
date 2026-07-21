@@ -44,3 +44,4 @@ collections:
       - { label: "Заголовок", name: "title", widget: "string" }
       - { label: "Дата", name: "date", widget: "datetime" }
       - { label: "Текст", name: "body", widget: "markdown" }
+      
