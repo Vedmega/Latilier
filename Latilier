@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Dolce Ricamo — Ручна вишивка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --bg: #f5f2ee;
+            --black: #111111;
+            --gold: #c9a15b;
+            --accent: #8b5c3b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Georgia", "Times New Roman", serif;
+            background: var(--bg);
+            color: var(--black);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(245, 242, 238, 0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid #ddd0c2;
+            z-index: 100;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .logo span {
+            font-size: 11px;
+            display: block;
+            letter-spacing: 0.25em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 1px;
+            background: var(--black);
+            transition: width 0.25s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+
+        .hero {
+            max-width: 1200px;
+            margin: 90px auto 0;
+            padding: 40px 24px 60px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 40px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .hero-sub {
+            font-size: 14px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #777;
+            margin-bottom: 24px;
+        }
+
+        .hero-text {
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 520px;
+        }
+
+        .hero-cta {
+            margin-top: 26px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn-main {
+            padding: 10px 26px;
+            border: 1px solid var(--black);
+            background: var(--black);
+            color: #fff;
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .btn-main:hover {
+            background: #333;
+        }
+
+        .btn-ghost {
+            padding: 10px 26px;
+            border: 1px solid var(--black);
+            background: transparent;
+            color: var(--black);
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .btn-ghost:hover {
+            background: #e5dfd6;
+        }
+
+        .hero-image {
+            position: relative;
+            border: 1px solid #ddd0c2;
+            padding: 18px;
+            background: #f9f6f2;
+        }
+
+        .hero-image-inner {
+            background: url("https://images.pexels.com/photos/3738085/pexels-photo-3738085.jpeg") center/cover no-repeat;
+            height: 360px;
+        }
+
+        .hero-tag {
+            position: absolute;
+            bottom: 22px;
+            left: 22px;
+            background: rgba(245, 242, 238, 0.9);
+            padding: 8px 14px;
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        /* COLLECTIONS */
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 26px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .section-sub {
+            font-size: 12px;
+            color: #777;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: #f9f6f2;
+            border: 1px solid #ddd0c2;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card-image {
+            background: #ddd;
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-title {
+            font-size: 13px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .card-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .card-meta {
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+            gap: 40px;
+            align-items: start;
+        }
+
+        .about-block {
+            background: #f9f6f2;
+            border: 1px solid #ddd0c2;
+            padding: 20px;
+        }
+
+        .about-title {
+            font-size: 14px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .about-text {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .about-list {
+            margin-top: 16px;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .about-list li {
+            margin-bottom: 6px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            background: #f9f6f2;
+            border: 1px solid #ddd0c2;
+            padding: 20px;
+            max-width: 520px;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .contact-label {
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #777;
+        }
+
+        .contact-value {
+            font-weight: 500;
+        }
+
+        .contact-note {
+            font-size: 12px;
+            margin-top: 12px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #ddd0c2;
+            padding: 18px 24px 26px;
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #777;
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .about {
+                grid-template-columns: 1fr;
+            }
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav">
+        <div class="logo">
+            DOLCE RICAMO
+            <span>HANDMADE EMBROIDERY</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#collections">Колекції</a>
+            <a href="#about">Ательє</a>
+            <a href="#contact">Контакти</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div>
+        <div class="hero-title">Dolce Ricamo</div>
+        <div class="hero-sub">Ручна вишивка · Couture · One of a kind</div>
+        <p class="hero-text">
+            Ател’є авторської ручної вишивки, натхнене естетикою високої моди.
+            Кожен виріб створюється вручну — голка, нитка, тканина, світло.
+            Жодних масових тиражів, лише унікальні речі, що живуть разом з вами.
+        </p>
+        <div class="hero-cta">
+            <button class="btn-main">Переглянути колекції</button>
+            <button class="btn-ghost">Індивідуальне замовлення</button>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <div class="hero-image-inner"></div>
+        <div class="hero-tag">Ручна вишивка · Atelier · Limited pieces</div>
+    </div>
+</section>
+
+<section class="section" id="collections">
+    <div class="section-header">
+        <div class="section-title">Колекції</div>
+        <div class="section-sub">Сезонні лінії та капсули</div>
+    </div>
+
+    <div class="grid">
+        <article class="card">
+            <div class="card-image" style="background-image:url('https://images.pexels.com/photos/3738082/pexels-photo-3738082.jpeg');"></div>
+            <div class="card-title">Чорне золото</div>
+            <p class="card-text">
+                Глибокий чорний, тонкі золоті нитки, ручна вишивка по шовку.
+                Лінія вечірніх суконь та топів, що тримають погляд.
+            </p>
+            <div class="card-meta">Evening · Silk · Gold thread</div>
+        </article>
+
+        <article class="card">
+            <div class="card-image" style="background-image:url('https://images.pexels.com/photos/3738080/pexels-photo-3738080.jpeg');"></div>
+            <div class="card-title">Білий сад</div>
+            <p class="card-text">
+                Молочні відтінки, квіткові мотиви, делікатна вишивка по льону.
+                Ідеально для весільних образів та особливих днів.
+            </p>
+            <div class="card-meta">Bridal · Linen · Floral</div>
+        </article>
+
+        <article class="card">
+            <div class="card-image" style="background-image:url('https://images.pexels.com/photos/3738083/pexels-photo-3738083.jpeg');"></div>
+            <div class="card-title">Міський барокко</div>
+            <p class="card-text">
+                Контрастні орнаменти, графічні лінії, вишивка по вовні та твідові.
+                Для тих, хто носить мистецтво щодня.
+            </p>
+            <div class="card-meta">Urban · Wool · Ornamental</div>
+        </article>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="section-header">
+        <div class="section-title">Ательє</div>
+        <div class="section-sub">Філософія та процес</div>
+    </div>
+
+    <div class="about">
+        <div class="about-block">
+            <div class="about-title">Ручна робота</div>
+            <p class="about-text">
+                Ми працюємо в форматі невеликого ательє: кожен виріб проходить повний цикл
+                ручної роботи — від ескізу до останнього стібка. Жодних шаблонів, лише
+                індивідуальний підхід до тканини, форми та історії, яку ви хочете розповісти.
+            </p>
+            <ul class="about-list">
+                <li>• індивідуальні примірки та підбір тканин</li>
+                <li>• ручна вишивка, аплікація, бісер</li>
+                <li>• обмежені капсульні колекції</li>
+                <li>• можливість створення сімейних реліквій</li>
+            </ul>
+        </div>
+
+        <div class="about-block">
+            <div class="about-title">Для кого</div>
+            <p class="about-text">
+                Dolce Ricamo — для тих, хто цінує тишу ручної роботи більше, ніж шум логотипів.
+                Для людей, які хочуть мати одну річ, але справжню: з історією, вагою, характером.
+            </p>
+            <p class="about-text" style="margin-top:12px;">
+                Ми працюємо з приватними клієнтами, невеликими брендами та стилістами,
+                які шукають унікальні вишиті елементи для зйомок, показів та редакцій.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="contact">
+    <div class="section-header">
+        <div class="section-title">Контакти</div>
+        <div class="section-sub">Запити та індивідуальні замовлення</div>
+    </div>
+
+    <div class="contact">
+        <div class="contact-row">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">atelier@dolcericamo.com</div>
+        </div>
+        <div class="contact-row">
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">@dolce.ricamo</div>
+        </div>
+        <div class="contact-row">
+            <div class="contact-label">Локація</div>
+            <div class="contact-value">Київ · онлайн-примірки</div>
+        </div>
+        <p class="contact-note">
+            Для індивідуальних замовлень надішліть короткий опис бажаного виробу:
+            силует, тканина, подія, орієнтовні терміни. Ми відповімо з пропозицією
+            та орієнтовним діапазоном вартості.
+        </p>
+    </div>
+</section>
+
+<footer>
+    Dolce Ricamo · Ручна вишивка · Limited Atelier
+</footer>
+
+</body>
+</html>
